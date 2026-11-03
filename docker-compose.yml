@@ -1,0 +1,37 @@
+name: lanconnector
+
+services:
+  hub:
+    build:
+      context: .
+      dockerfile: hub/Dockerfile
+    environment:
+      LANCONN_HUB_LISTEN: 0.0.0.0:8080
+      LANCONN_HUB_SECRET: ${LANCONN_HUB_SECRET:-dev-secret-change-me}
+      LANCONN_RELAY_URL: relay:3478
+      LANCONN_LOG_LEVEL: debug
+    ports:
+      - "8080:8080"
+    restart: unless-stopped
+
+  relay:
+    build:
+      context: .
+      dockerfile: relay/Dockerfile
+    environment:
+      LANCONN_RELAY_LISTEN: 0.0.0.0:3478
+      LANCONN_RELAY_SECRET: ${LANCONN_HUB_SECRET:-dev-secret-change-me}
+    ports:
+      - "3478:3478/udp"
+    restart: unless-stopped
+
+  # Redis is the production state backend for the Hub (M2). It is not required
+  # by the in-memory reference implementation used in dev.
+  # redis:
+  #   image: redis:7-alpine
+  #   command: ["redis-server", "--appendonly", "yes"]
+  #   ports: ["6379:6379"]
+  #   volumes: ["redis-data:/data"]
+
+# volumes:
+#   redis-data:

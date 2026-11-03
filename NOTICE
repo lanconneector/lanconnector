@@ -1,0 +1,20 @@
+LanConnector
+Copyright 2026 LanConnector Contributors
+
+This product includes software developed by third parties:
+
+* WireGuard® protocol design and reference implementations
+  (Jason A. Donenfeld, WireGuard LLC) — protocol specification, no code copied.
+* boringtun (Cloudflare) — BSD-3-Clause, candidate Noise implementation.
+* quinn / rustls — Apache-2.0 / ISC, candidate QUIC stack.
+* Wintun (WireGuard LLC) — MIT, Windows TUN driver (prebuilt, signed).
+* tap-windows6 (OpenVPN) — GPLv2 with linking exception, L2 driver.
+* nhooyr.io/websocket — ISC.
+* Prometheus client libraries — Apache-2.0.
+
+"WireGuard" is a registered trademark of Jason A. Donenfeld. LanConnector uses
+the WireGuard protocol for interoperability and is not affiliated with or
+endorsed by the WireGuard project.
+
+"LanConnector", the LanConnector logo and lanconnector.net are trademarks of
+the LanConnector project. See docs/branding.md for the usage policy.
